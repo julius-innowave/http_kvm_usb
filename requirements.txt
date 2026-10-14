@@ -1,0 +1,8 @@
+fastapi>=0.110,<1
+uvicorn[standard]>=0.27,<1
+pyserial>=3.5,<4
+# Video from the capture card. Without it the adapter still runs and answers
+# placeholder frames, and /status says why.
+opencv-python-headless>=4.9
+# Only for the tests in tests/ (FastAPI's TestClient).
+httpx>=0.27
