@@ -8,8 +8,8 @@ whether the target's pointer follows.
 
 Standard library only — runs with the system python3 on the InnoConnect box.
 
-    python3 scripts/arrow_mouse.py                    # /dev/ttyACM1, 1920x1080
-    python3 scripts/arrow_mouse.py --port /dev/ttyACM1 --width 1920 --height 1080
+    python3 scripts/mouse_test.py                    # /dev/ttyACM1, 1920x1080
+    python3 scripts/mouse_test.py --port /dev/ttyACM1 --width 1920 --height 1080
 
 Keys
     ← ↑ → ↓    move by STEP pixels

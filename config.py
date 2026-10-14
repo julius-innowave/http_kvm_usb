@@ -1,7 +1,7 @@
 """Everything an operator may change, read from the environment.
 
-Nothing is read from outside this folder. Optionally, a `.env` file next to
-this one is loaded first (KEY=value per line; start from `env.example`). Real
+Nothing is read from outside the project. Optionally, the project's `.env`
+file is loaded first (KEY=value per line; start from `env.example`). Real
 environment variables win over it.
 """
 from __future__ import annotations
@@ -9,11 +9,12 @@ from __future__ import annotations
 import os
 from pathlib import Path
 
-HERE = Path(__file__).resolve().parent
+#: The project folder (the one holding run.sh, .env and logs/).
+ROOT = Path(__file__).resolve().parent
 
 
 def _load_env_file() -> None:
-    path = Path(os.getenv("INNO_ENV_FILE", HERE / ".env"))
+    path = Path(os.getenv("INNO_ENV_FILE", ROOT / ".env"))
     try:
         lines = path.read_text(encoding="utf-8").splitlines()
     except OSError:
@@ -119,7 +120,8 @@ VIDEO_PIXEL = os.getenv("INNO_VIDEO_PIXEL", "MJPG").strip().upper()
 # ---- logging ------------------------------------------------------------------
 
 #: Daily serial log, `<dir>/YYYY-MM-DD/debug.txt`. Blank disables it.
-LOG_DIR = os.getenv("INNO_LOG_DIR", str(HERE / "logs"))
+#: run.sh also keeps adapter.out and adapter.pid in the project's logs/.
+LOG_DIR = os.getenv("INNO_LOG_DIR", str(ROOT / "logs"))
 
 
 def abs_to_wire(x: int, y: int) -> tuple[int, int]:

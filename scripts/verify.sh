@@ -48,8 +48,8 @@ case "$status" in
         note ""
         note "Nothing below this can pass. Usual causes:"
         note "  - another program holds the serial port: sudo fuser -v /dev/ttyACM*"
-        note "    (ICR eco-kvm session, adapter/ or adapter_usb/, GUI, cutecom, arrow_mouse.py)"
-        note "  - no permission for the port: sudo usermod -aG dialout,video \$USER, then log in again (README section 1)"
+        note "    (ICR eco-kvm session, adapter/ or adapter_usb/, GUI, cutecom, mouse_test.py)"
+        note "  - no permission for the port: restart with sudo ./stop.sh && sudo ./run.sh (README section 1)"
         note "  - the board is on PS2: see README section 7 (move it to USB deliberately)"
         note "  - just started: the adapter retries every 20 s; check tail -f adapter.out"
         exit 1 ;;

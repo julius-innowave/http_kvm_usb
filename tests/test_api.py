@@ -1,7 +1,7 @@
 """End-to-end tests of the HTTP API against simulated boards (no hardware).
 
     .venv/bin/pip install -r requirements.txt
-    .venv/bin/python -m unittest discover -s tests -v
+    .venv/bin/python -m unittest discover -s tests -v      (from the project folder)
 """
 from __future__ import annotations
 
@@ -26,13 +26,13 @@ os.environ.update({
 sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-import board  # noqa: E402
-import config  # noqa: E402
-import device as device_mod  # noqa: E402
 from fake_board import FakeFirmware, FakePortInfo, FakeSerial  # noqa: E402
 from fastapi.testclient import TestClient  # noqa: E402
 
 import app as app_mod  # noqa: E402
+import board  # noqa: E402
+import config  # noqa: E402
+import device as device_mod  # noqa: E402
 
 board.serial_factory = FakeSerial
 board.list_candidate_ports = lambda: [FakePortInfo("/dev/ttyACM0"), FakePortInfo("/dev/ttyACM1")]

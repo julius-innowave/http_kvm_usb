@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Type on the target with your own keyboard, straight over the serial port.
 
-The keyboard twin of `arrow_mouse.py`: every key you press here is sent to the
+The keyboard twin of `mouse_test.py`: every key you press here is sent to the
 board as one USB keyboard report (`#B1@`, then an all-keys-up report) and the
 board's reply is printed beside it, so you see at once whether the board takes
 it and whether the key appears on the target.
@@ -21,7 +21,7 @@ Not sent: Ctrl, Alt and Win combinations, so they never fight the terminal.
 Quit with Ctrl+C or Ctrl+D (handled here, not sent).
 
 Only one program may use the serial port: stop the adapter, ICR's eco-kvm
-session, the GUI, cutecom and arrow_mouse.py first.
+session, the GUI, cutecom and mouse_test.py first.
 """
 from __future__ import annotations
 
@@ -33,7 +33,7 @@ import termios
 import time
 import tty
 
-from arrow_mouse import BAUDS, exchange, one_line, open_port
+from mouse_test import BAUDS, exchange, one_line, open_port
 
 SHIFT = 0x02
 
